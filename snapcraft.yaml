@@ -1,7 +1,7 @@
 name: qycli-nginx
 adopt-info: nginx
 summary: NGINX for qycli
-description: "Mainline GINX with some extra modules"
+description: "Mainline NGINX with some extra modules"
 
 grade: devel
 confinement: devmode
