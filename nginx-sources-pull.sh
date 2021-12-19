@@ -106,8 +106,8 @@ tar -zxf ngx_devel_kit.tar.gz --strip-components=1 -C sources/modules/ngx_devel_
 
 ## Echo Nginx
 echo "Downloading Echo Nginx"
-echo-nginx-module_source=https://github.com/openresty/echo-nginx-module/tarball/master
-echo "echo-nginx-module_source=$echo-nginx-module_source" >> nginx-qycli-sources
+echo_nginx_module_source=https://github.com/openresty/echo-nginx-module/tarball/master
+echo "echo-nginx-module_source=$echo_nginx_module_source" >> nginx-qycli-sources
 
 mkdir -p sources/modules/echo-nginx-module
 wget -qO echo-nginx-module.tar.gz $echo-nginx-module_source
