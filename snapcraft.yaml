@@ -17,6 +17,7 @@ parts:
   nginx:
     plugin: autotools
     override-pull: |
+      apt-get install software-properties-common -y
       add-apt-repository -y ppa:maxmind/ppa
 
       # Download NGINX
