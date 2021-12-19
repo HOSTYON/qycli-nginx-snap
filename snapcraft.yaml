@@ -100,7 +100,7 @@ parts:
       - --add-dynamic-module=sources/modules/ngx_http_auth_pam_module
       - --add-dynamic-module=sources/modules/nginx-dav-ext-module
       - --add-dynamic-module=sources/modules/ngx_devel_kit
-      - --add-dynamic-module=sources/modules/echo-nginx-module
+      - --add-dynamic-module=sources/modules/echo_nginx_module
       - --add-dynamic-module=sources/modules/ngx-fancyindex
       - --add-dynamic-module=sources/modules/nchan
       - --add-dynamic-module=sources/modules/nginx-rtmp-module
