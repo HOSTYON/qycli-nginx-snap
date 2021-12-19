@@ -9,7 +9,7 @@ confinement: devmode
 apps:
   nginx:
     command: bin/nginx
-    deamon: forking
+    daemon: forking
     plugs: [network, network-bind]
 
 parts:
