@@ -17,7 +17,6 @@ parts:
   nginx:
     plugin: autotools
     override-pull: |
-      apt-get install software-properties-common curl wget -y
       add-apt-repository -y ppa:maxmind/ppa
 
       # Download NGINX
@@ -26,10 +25,14 @@ parts:
       curl "http://nginx.org/download/nginx-${ngxLatestVer}.tar.gz" > nginx-latest.tar.gz
 
       # Download Dependencies and Modules and unpack them to sources/
-      project/nginx-sources-pull.sh
+      chmod +x nginx-sources-pull.sh
+      ./nginx-sources-pull.sh
 
     source: nginx-latest.tar.gz
     build-packages:
+      - software-properties-common
+      - curl
+      - wget
       - libgd-dev
       - libgeoip-dev
       - libpcre3-dev
