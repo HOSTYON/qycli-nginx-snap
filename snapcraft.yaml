@@ -45,7 +45,7 @@ parts:
       - mmdb-bin
       - libmaxminddb0
       - libmaxminddb-dev
-    configflags:
+    autotools-configure-parameters:
       - --prefix=/etc/nginx
       - --conf-path=/etc/nginx/nginx.conf
       - --http-log-path=/var/log/nginx/access.log
