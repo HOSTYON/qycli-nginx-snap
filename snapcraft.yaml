@@ -31,6 +31,7 @@ parts:
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
+    build-attributes: [keep-execstack]
     build-packages:
       - software-properties-common
       - curl
@@ -52,7 +53,6 @@ parts:
       - libmaxminddb0
       - libmaxminddb-dev
     autotools-configure-parameters:
-      - --prefix=/etc/nginx
       - --conf-path=/etc/nginx/nginx.conf
       - --http-log-path=/var/log/nginx/access.log
       - --error-log-path=/var/log/nginx/error.log
@@ -110,5 +110,3 @@ parts:
       - --add-dynamic-module=sources/modules/ngx_brotli
       - --add-dynamic-module=sources/modules/incubator-pagespeed-ngx
       - --with-file-aio
-    organize:
-      sbin: bin
