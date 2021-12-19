@@ -4,15 +4,18 @@
 #####
 # Functions
 set_github_url() {
-    curl -s https://github.com/$github_repo/tags | grep "$github_repo" | grep -m1 "tar.gz" | grep -Eo "/$github_repo/[a-zA-Z0-9./?=_%:-]*"
+    curl -s https://github.com/$github_repo/tags | tac | tac | grep "$github_repo" | grep -m1 "tar.gz" | grep -Eo "/$github_repo/[a-zA-Z0-9./?=_%:-]*"
 }
 
 
 #####
 # Download Dependencies
+echo "Downloading Dependencies"
+
 [[ -f nginx-qycli-sources ]] && rm nginx-qycli-sources
 
 ## PCRE
+echo "Downloading PCRE"
 pcre_source=https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
 echo "pcre_source=$pcre_source" >> nginx-qycli-sources
 
@@ -22,6 +25,7 @@ wget -qO pcre.tar.bz2 $pcre_source
 tar -xf pcre.tar.bz2 --strip-components=1 -C sources/dependencies/pcre
 
 ## zlib
+echo "Downloading zlib"
 github_repo=cloudflare/zlib
 zlib_source=https://github.com$(set_github_url)
 echo "zlib_source=$zlib_source" >> nginx-qycli-sources
@@ -32,6 +36,7 @@ wget -qO zlib.tar.gz $zlib_source
 tar -zxf zlib.tar.gz --strip-components=1 -C sources/dependencies/zlib
 
 ## OpenSSL
+echo "Downloading OpenSSL"
 github_repo=openssl/openssl
 openssl_source=https://github.com$(set_github_url)
 echo "openssl_source=$openssl_source" >> nginx-qycli-sources
@@ -44,8 +49,10 @@ tar -zxf openssl.tar.gz --strip-components=1 -C sources/dependencies/openssl
 
 #####
 # Download Modules Source Code
+echo "Downloading Mobules"
 
 ## NGX Cache Purge
+echo "Downloading NGX Cache Purge"
 github_repo=nginx-modules/ngx_cache_purge
 ngx_cache_purge_source=https://github.com$(set_github_url)
 echo "ngx_cache_purge_source=$ngx_cache_purge_source" >> nginx-qycli-sources
@@ -56,6 +63,7 @@ wget -qO ngx_cache_purge.tar.gz $ngx_cache_purge_source
 tar -zxf ngx_cache_purge.tar.gz --strip-components=1 -C sources/modules/ngx_cache_purge
 
 ## NGX Headers More
+echo "Downloading NGX Headers More"
 ngx_headers_more_source=https://github.com/openresty/headers-more-nginx-module/tarball/master
 echo "ngx_headers_more_source=$ngx_headers_more_source" >> nginx-qycli-sources
 
@@ -65,6 +73,7 @@ wget -qO ngx_headers_more.tar.gz $ngx_headers_more_source
 tar -zxf ngx_headers_more.tar.gz --strip-components=1 -C sources/modules/ngx_headers_more
 
 ## NGX HTTP AUTH PAM
+echo "Downloading NGX HTTP AUTH PAM"
 ngx_http_auth_pam_module_source=https://github.com/sto/ngx_http_auth_pam_module/tarball/master
 echo "ngx_http_auth_pam_module_source=$ngx_http_auth_pam_module_source" >> nginx-qycli-sources
 
@@ -74,6 +83,7 @@ wget -qO ngx_http_auth_pam_module.tar.gz $ngx_http_auth_pam_module_source
 tar -zxf ngx_http_auth_pam_module.tar.gz --strip-components=1 -C sources/modules/ngx_http_auth_pam_module
 
 ## Nginx Dav Ext
+echo "Downloading Nginx Dav Ext"
 github_repo=arut/nginx-dav-ext-module
 nginx_dav_ext_module_source=https://github.com$(set_github_url)
 echo "nginx_dav_ext_module_source=$nginx_dav_ext_module_source" >> nginx-qycli-sources
@@ -84,6 +94,7 @@ wget -qO nginx-dav-ext-module.tar.gz $nginx_dav_ext_module_source
 tar -zxf nginx-dav-ext-module.tar.gz --strip-components=1 -C sources/modules/nginx-dav-ext-module
 
 ## NGX Devel Kit
+echo "Downloading NGX Devel Kit"
 github_repo=vision5/ngx_devel_kit
 ngx_devel_kit_source=https://github.com$(set_github_url)
 echo "ngx_devel_kit_source=$ngx_devel_kit_source" >> nginx-qycli-sources
@@ -94,6 +105,7 @@ wget -qO ngx_devel_kit.tar.gz $ngx_devel_kit_source
 tar -zxf ngx_devel_kit.tar.gz --strip-components=1 -C sources/modules/ngx_devel_kit
 
 ## Echo Nginx
+echo "Downloading Echo Nginx"
 echo-nginx-module_source=https://github.com/openresty/echo-nginx-module/tarball/master
 echo "echo-nginx-module_source=$echo-nginx-module_source" >> nginx-qycli-sources
 
@@ -103,6 +115,7 @@ wget -qO echo-nginx-module.tar.gz $echo-nginx-module_source
 tar -zxf echo-nginx-module.tar.gz --strip-components=1 -C sources/modules/echo-nginx-module
 
 ## NGX Fancyindex
+echo "Downloading NGX Fancyindex"
 github_repo=aperezdc/ngx-fancyindex
 ngx_fancyindex_source=https://github.com$(set_github_url)
 echo "ngx_fancyindex_source=$ngx_fancyindex_source" >> nginx-qycli-sources
@@ -113,6 +126,7 @@ wget -qO ngx-fancyindex.tar.gz $ngx_fancyindex_source
 tar -zxf ngx-fancyindex.tar.gz --strip-components=1 -C sources/modules/ngx-fancyindex
 
 ## NCHAN
+echo "Downloading NCHAN"
 nchan_source=https://github.com/slact/nchan/tarball/master
 echo "nchan_source=$nchan_source" >> nginx-qycli-sources
 
@@ -122,15 +136,17 @@ wget -qO nchan.tar.gz $nchan_source
 tar -zxf nchan.tar.gz --strip-components=1 -C sources/modules/nchan
 
 ## Nginx RTMP
+echo "Downloading Nginx RTMP"
 nginx_rtmp_module_source=https://github.com/arut/nginx-rtmp-module/tarball/master
 echo "nginx_rtmp_module_source=$nginx_rtmp_module_source" >> nginx-qycli-sources
 
 mkdir -p sources/modules/nginx-rtmp-module
 wget -qO nginx-rtmp-module.tar.gz $nginx_rtmp_module_source
 [[ ! -s nginx-rtmp-module.tar.gz ]] && echo "Nginx RTMP download didn't work"
-tar zxvf nginx-rtmp-module.tar.gz --strip-components=1 -C sources/modules/nginx-rtmp-module
+tar -zxf nginx-rtmp-module.tar.gz --strip-components=1 -C sources/modules/nginx-rtmp-module
 
 ## Nginx Upload Progress
+echo "Downloading Nginx Upload Progress"
 nginx_upload_progress_module_source=https://github.com/masterzen/nginx-upload-progress-module/tarball/master
 echo "nginx_upload_progress_module_source=$nginx_upload_progress_module_source" >> nginx-qycli-sources
 
@@ -140,6 +156,7 @@ wget -qO nginx-upload-progress-module.tar.gz $nginx_upload_progress_module_sourc
 tar -zxf nginx-upload-progress-module.tar.gz --strip-components=1 -C sources/modules/nginx-upload-progress-module
 
 ## NGX HTTP Substitutions Filter
+echo "Downloading NGX HTTP Substitutions Filter"
 ngx_http_substitutions_filter_module_source=https://github.com/yaoweibin/ngx_http_substitutions_filter_module/tarball/master
 echo "ngx_http_substitutions_filter_module_source=$ngx_http_substitutions_filter_module_source" >> nginx-qycli-sources
 
@@ -149,6 +166,7 @@ wget -qO ngx_http_substitutions_filter_module.tar.gz $ngx_http_substitutions_fil
 tar -zxf ngx_http_substitutions_filter_module.tar.gz --strip-components=1 -C sources/modules/ngx_http_substitutions_filter_module
 
 ## NGX HTTP GeoIP2
+echo "Downloading NGX HTTP GeoIP2"
 github_repo=leev/ngx_http_geoip2_module
 ngx_http_geoip2_module_source=https://github.com$(set_github_url)
 echo "ngx_http_geoip2_module_source=$ngx_http_geoip2_module_source" >> nginx-qycli-sources
@@ -159,6 +177,7 @@ wget -qO ngx_http_geoip2_module.tar.gz $ngx_http_geoip2_module_source
 tar -zxf ngx_http_geoip2_module.tar.gz --strip-components=1 -C sources/modules/ngx_http_geoip2_module
 
 ## NGX Brotli
+echo "Downloading NGX Brotli + Brotli"
 ngx_brotli_source=https://github.com/google/ngx_brotli/tarball/master
 github_repo=google/brotli
 brotli_source=https://github.com$(set_github_url)
@@ -174,6 +193,7 @@ wget -qO brotli.tar.gz $brotli_source
 tar -zxf brotli.tar.gz --strip-components=1 -C sources/modules/ngx_brotli/deps/brotli
 
 ## NGX Pagespeed
+echo "Downloading NGX Pagespeed"
 github_repo=apache/incubator-pagespeed-ngx
 incubator_pagespeed_ngx_source=https://github.com$(set_github_url)
 echo "incubator_pagespeed_ngx_source=$incubator_pagespeed_ngx_source" >> nginx-qycli-sources
