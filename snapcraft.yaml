@@ -26,7 +26,7 @@ parts:
       curl "http://nginx.org/download/nginx-${ngxLatestVer}.tar.gz" > nginx-latest.tar.gz
 
       # Download Dependencies and Modules and unpack them to sources/
-      ./nginx-sources-pull.sh
+      project/nginx-sources-pull.sh
 
     source: nginx-latest.tar.gz
     build-packages:
