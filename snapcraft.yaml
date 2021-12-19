@@ -25,8 +25,7 @@ parts:
       curl "http://nginx.org/download/nginx-${ngxLatestVer}.tar.gz" > nginx-latest.tar.gz
 
       # Download Dependencies and Modules and unpack them to sources/
-      chmod +x nginx-sources-pull.sh
-      ./nginx-sources-pull.sh
+      $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
 
     source: nginx-latest.tar.gz
     build-packages:
