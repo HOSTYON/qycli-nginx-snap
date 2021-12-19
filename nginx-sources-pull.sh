@@ -110,7 +110,7 @@ echo_nginx_module_source=https://github.com/openresty/echo-nginx-module/tarball/
 echo "echo_nginx_module_source=$echo_nginx_module_source" >> nginx-qycli-sources
 
 mkdir -p sources/modules/echo_nginx_module
-wget -qO echo_nginx_module.tar.gz $echo-nginx-module_source
+wget -qO echo_nginx_module.tar.gz $echo_nginx_module_source
 [[ ! -s echo_nginx_module.tar.gz ]] && echo "Echo Nginx download didn't work"
 tar -zxf echo_nginx_module.tar.gz --strip-components=1 -C sources/modules/echo_nginx_module
 
