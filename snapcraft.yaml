@@ -9,7 +9,7 @@ confinement: devmode
 
 apps:
   nginx:
-    command: sbin/nginx
+    command: usr/local/nginx/sbin/nginx
     daemon: forking
     plugs: [network, network-bind]
 
