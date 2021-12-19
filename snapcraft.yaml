@@ -1,4 +1,5 @@
 name: qycli-nginx
+base: core20
 adopt-info: nginx
 summary: NGINX for qycli
 description: "Mainline NGINX with some extra modules"
