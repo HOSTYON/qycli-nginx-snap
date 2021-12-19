@@ -30,7 +30,7 @@ parts:
 
       snapcraftctl pull
 
-    source: nginx-latest.tar.gz
+    source: $SNAPCRAFT_PART_SRC/nginx-latest.tar.gz
     build-packages:
       - software-properties-common
       - curl
