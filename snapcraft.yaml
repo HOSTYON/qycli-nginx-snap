@@ -28,6 +28,8 @@ parts:
       chmod +x $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
       $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
 
+      snapcraftctl pull
+
     source: nginx-latest.tar.gz
     build-packages:
       - software-properties-common
