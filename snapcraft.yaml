@@ -27,10 +27,10 @@ parts:
       # Download Dependencies and Modules and unpack them to sources/
       chmod +x $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
       $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
-      echo $SNAPCRAFT_PART_SRC/
+
       snapcraftctl pull
 
-    source: ./src/nginx-latest.tar.gz
+    source: /root/parts/nginx/src/nginx-latest.tar.gz
     build-packages:
       - software-properties-common
       - curl
