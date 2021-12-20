@@ -7,6 +7,9 @@ description: "Mainline NGINX with some extra modules"
 grade: devel
 confinement: devmode
 
+architectures:
+  - build-on: amd64
+
 apps:
   nginx:
     command: usr/local/nginx/sbin/nginx
