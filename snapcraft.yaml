@@ -10,11 +10,11 @@ confinement: devmode
 architectures:
   - build-on: amd64
 
-apps:
-  nginx:
-    command: usr/local/nginx/sbin/nginx
-    daemon: forking
-    plugs: [network, network-bind]
+#apps:
+#  nginx:
+#    command: usr/local/nginx/sbin/nginx
+#    daemon: forking
+#    plugs: [network, network-bind]
 
 parts:
   nginx:
