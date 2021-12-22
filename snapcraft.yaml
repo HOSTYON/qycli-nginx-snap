@@ -4,8 +4,8 @@ adopt-info: nginx
 summary: NGINX for qycli
 description: "Mainline NGINX with some extra modules"
 
-grade: devel
-confinement: devmode
+grade: stable
+confinement: strict
 
 architectures:
   - build-on: amd64
@@ -28,8 +28,8 @@ parts:
       curl "http://nginx.org/download/nginx-${ngxLatestVer}.tar.gz" > $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
 
       # Download Dependencies and Modules and unpack them to sources/
-      chmod +x $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
-      $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull.sh
+      chmod +x $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull
+      $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull
 
       snapcraftctl pull
 
