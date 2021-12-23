@@ -45,7 +45,7 @@ parts:
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
-    build-attributes: [keep-execstack]
+    #build-attributes: [keep-execstack]
     build-packages:
       - software-properties-common
       - curl
