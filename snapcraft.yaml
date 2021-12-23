@@ -18,9 +18,9 @@ parts:
   ready-command:
     plugin: dump
     override-pull: |
-      chmod +x ready-command
+      chmod +x $SNAPCRAFT_PROJECT_DIR/ready-command
       snapcraftctl pull
-    source: .
+    source: $SNAPCRAFT_PROJECT_DIR/ready-command
     organize:
       ready-command: bin/
 
