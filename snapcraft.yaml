@@ -21,6 +21,7 @@ parts:
       chmod +x $SNAPCRAFT_PROJECT_DIR/ready-command
       cp -rf $SNAPCRAFT_PROJECT_DIR/ready-command bin/ready-command
     source: $SNAPCRAFT_PROJECT_DIR/ready-command
+    source-type: local
 
   nginx:
     plugin: autotools
