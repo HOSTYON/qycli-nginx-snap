@@ -20,6 +20,7 @@ parts:
     override-pull: |
       chmod +x $SNAPCRAFT_PROJECT_DIR/ready-command
       snapcraftctl pull
+    source-type: local
     source: $SNAPCRAFT_PROJECT_DIR/ready-command
     organize:
       ready-command: bin/
