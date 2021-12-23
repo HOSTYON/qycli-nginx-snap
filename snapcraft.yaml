@@ -10,13 +10,20 @@ confinement: strict
 architectures:
   - build-on: amd64
 
-#apps:
-#  nginx:
-#    command: usr/local/nginx/sbin/nginx
-#    daemon: forking
-#    plugs: [network, network-bind]
+apps:
+  ready-command:
+    command: bin/ready-command
 
 parts:
+  ready-command:
+    plugin: dump
+    override-pull: |
+      chmod +x ./ready-command
+      snapcraftctl pull
+    source: .
+    organize:
+      ready-command: bin/
+
   nginx:
     plugin: autotools
     override-pull: |
@@ -26,6 +33,10 @@ parts:
       ngxLatestVer=$(curl 'http://nginx.org/download/' | grep -oP 'href="nginx-\K[0-9]+\.[0-9]+\.[0-9]+' | sort -t. -rn -k1,1 -k2,2 -k3,3 | head -1)
       snapcraftctl set-version "${ngxLatestVer}"
       curl "http://nginx.org/download/nginx-${ngxLatestVer}.tar.gz" > $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
+
+      ## Copy ready command from project dir to bin
+      #cp -rf $SNAPCRAFT_PROJECT_DIR/ready-command bin/ready-command
+      #chmod +x bin/ready-command
 
       # Download Dependencies and Modules and unpack them to sources/
       chmod +x $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull
