@@ -15,7 +15,7 @@ apps:
     command: usr/local/nginx/sbin/nginx
 
 parts:
-  nginx:
+  qycli-nginx:
     plugin: autotools
     override-pull: |
       add-apt-repository -y ppa:maxmind/ppa
