@@ -1,6 +1,0 @@
-#!/bin/bash
-
-printf "
-NGINX for qycli carrier snap is ready to use.
-For more info on how to use it visit https://qycli.org
-"
