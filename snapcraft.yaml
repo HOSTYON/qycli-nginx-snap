@@ -10,20 +10,7 @@ confinement: strict
 architectures:
   - build-on: amd64
 
-apps:
-  ready-command:
-    command: bin/ready-command
-
 parts:
-  ready-command:
-    plugin: dump
-    override-pull: |
-      chmod +x $SNAPCRAFT_PROJECT_DIR/ready-command
-      mkdir bin
-      cp -rf $SNAPCRAFT_PROJECT_DIR/ready-command bin/ready-command
-    source: $SNAPCRAFT_PROJECT_DIR/ready-command
-    source-type: local
-
   nginx:
     plugin: autotools
     override-pull: |
@@ -45,7 +32,6 @@ parts:
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
-    #build-attributes: [keep-execstack]
     build-packages:
       - software-properties-common
       - curl
@@ -68,6 +54,7 @@ parts:
       - libmaxminddb-dev
     autotools-configure-parameters:
       - --conf-path=/etc/nginx/nginx.conf
+      - --modules-path=/usr/lib/nginx/modules
       - --http-log-path=/var/log/nginx/access.log
       - --error-log-path=/var/log/nginx/error.log
       - --lock-path=/var/lock/nginx.lock
