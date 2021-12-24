@@ -1,6 +1,6 @@
 name: qycli-nginx
 base: core20
-adopt-info: nginx
+adopt-info: qycli-nginx
 summary: NGINX for qycli
 description: "Mainline NGINX with some extra modules for the qycli LEMP stack builder"
 
