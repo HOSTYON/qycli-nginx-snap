@@ -94,7 +94,7 @@ parts:
       - --with-http_sub_module
       - --with-http_xslt_module=dynamic
       - --with-mail=dynamic
-      - --with-mail_ssl_module=dynamic
+      - --with-mail_ssl_module
       - --with-stream
       - --with-stream_ssl_module
       - --with-stream_ssl_preread_module
