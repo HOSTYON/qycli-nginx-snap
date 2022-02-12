@@ -33,8 +33,6 @@ parts:
       chmod +x $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull
       $SNAPCRAFT_PROJECT_DIR/nginx-sources-pull
 
-      add-apt-repository -y ppa:maxmind/ppa
-
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
