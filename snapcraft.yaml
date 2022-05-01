@@ -39,9 +39,6 @@ parts:
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
     override-build: |
-      export LUAJIT_LIB="/luajit/lib"
-      export LUAJIT_INC="/luajit/include/luajit-2.1"
-
       snapcraftctl build
 
       cd sources/modules/lua-nginx-module/lua_resty_core
