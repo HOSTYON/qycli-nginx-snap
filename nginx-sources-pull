@@ -122,6 +122,33 @@ wget -qO ngx-fancyindex.tar.gz "$ngx_fancyindex_source"
 [[ ! -s ngx-fancyindex.tar.gz ]] && echo "NGX Fancyindex download didn't work"
 tar -zxf ngx-fancyindex.tar.gz --strip-components=1 -C sources/modules/ngx-fancyindex
 
+# NGX Lua
+mkdir -p sources/modules/lua-nginx-module/openresty_luajit2
+
+github_repo=openresty/lua-nginx-module
+lua_nginx_module_source=https://github.com$(set_github_url)
+echo "lua_nginx_module_source=$lua_nginx_module_source" >>nginx-qycli-sources
+wget -qO lua-nginx-module.tar.gz "$lua_nginx_module_source"
+tar zxvf lua-nginx-module.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module
+
+github_repo=openresty/luajit2
+openresty_luajit2_source=https://github.com$(set_github_url)
+echo "openresty_luajit2_source=$openresty_luajit2_source" >>nginx-qycli-sources
+wget -qO openresty_luajit2.tar.gz "$openresty_luajit2_source"
+tar zxvf openresty_luajit2.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module/openresty_luajit2
+
+mkdir sources/modules/lua-nginx-module/lua_resty_core
+lua_resty_core_source=https://github.com/openresty/lua-resty-core/tarball/master
+echo "lua_resty_core_source=$lua_resty_core_source" >>nginx-qycli-sources
+wget -qO lua_resty_core.tar.gz "$lua_resty_core_source"
+tar -zxf lua_resty_core.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module/lua_resty_core
+
+mkdir sources/modules/lua-nginx-module/lua_resty_lrucache
+lua_resty_lrucache_source=https://github.com/openresty/lua-resty-lrucache/tarball/master
+echo "lua_resty_lrucache_source=$lua_resty_lrucache_source" >>nginx-qycli-sources
+wget -qO lua_resty_lrucache.tar.gz "$lua_resty_lrucache_source"
+tar -zxf lua_resty_lrucache.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module/lua_resty_lrucache
+
 ## NCHAN
 echo "Downloading NCHAN"
 nchan_source=https://github.com/slact/nchan/tarball/master
@@ -174,32 +201,32 @@ wget -qO ngx_http_geoip2_module.tar.gz "$ngx_http_geoip2_module_source"
 tar -zxf ngx_http_geoip2_module.tar.gz --strip-components=1 -C sources/modules/ngx_http_geoip2_module
 
 ## NGX Brotli
-echo "Downloading NGX Brotli + Brotli"
-ngx_brotli_source=https://github.com/google/ngx_brotli/tarball/master
-github_repo=google/brotli
-brotli_source=https://github.com$(set_github_url)
-echo "ngx_brotli_source=$ngx_brotli_source" >>nginx-qycli-sources
-echo "brotli_source=$brotli_source" >>nginx-qycli-sources
+#echo "Downloading NGX Brotli + Brotli"
+#ngx_brotli_source=https://github.com/google/ngx_brotli/tarball/master
+#github_repo=google/brotli
+#brotli_source=https://github.com$(set_github_url)
+#echo "ngx_brotli_source=$ngx_brotli_source" >>nginx-qycli-sources
+#echo "brotli_source=$brotli_source" >>nginx-qycli-sources
 
-mkdir -p sources/modules/ngx_brotli/deps/brotli
-wget -qO ngx_brotli.tar.gz $ngx_brotli_source
-[[ ! -s ngx_brotli.tar.gz ]] && echo "NGX Brotli download didn't work"
-tar -zxf ngx_brotli.tar.gz --strip-components=1 -C sources/modules/ngx_brotli
-wget -qO brotli.tar.gz "$brotli_source"
-[[ ! -s brotli.tar.gz ]] && echo "Brotli download didn't work"
-tar -zxf brotli.tar.gz --strip-components=1 -C sources/modules/ngx_brotli/deps/brotli
+#mkdir -p sources/modules/ngx_brotli/deps/brotli
+#wget -qO ngx_brotli.tar.gz $ngx_brotli_source
+#[[ ! -s ngx_brotli.tar.gz ]] && echo "NGX Brotli download didn't work"
+#tar -zxf ngx_brotli.tar.gz --strip-components=1 -C sources/modules/ngx_brotli
+#wget -qO brotli.tar.gz "$brotli_source"
+#[[ ! -s brotli.tar.gz ]] && echo "Brotli download didn't work"
+#tar -zxf brotli.tar.gz --strip-components=1 -C sources/modules/ngx_brotli/deps/brotli
 
 ## NGX Pagespeed
-echo "Downloading NGX Pagespeed"
-github_repo=apache/incubator-pagespeed-ngx
-incubator_pagespeed_ngx_source=https://github.com$(set_github_url)
-echo "incubator_pagespeed_ngx_source=$incubator_pagespeed_ngx_source" >>nginx-qycli-sources
+#echo "Downloading NGX Pagespeed"
+#github_repo=apache/incubator-pagespeed-ngx
+#incubator_pagespeed_ngx_source=https://github.com$(set_github_url)
+#echo "incubator_pagespeed_ngx_source=$incubator_pagespeed_ngx_source" >>nginx-qycli-sources
 
-mkdir -p sources/modules/incubator-pagespeed-ngx
-wget -qO incubator-pagespeed-ngx.tar.gz "$incubator_pagespeed_ngx_source"
-[[ ! -s incubator-pagespeed-ngx.tar.gz ]] && echo "NGX Pagespeed download didn't work"
-tar -zxf incubator-pagespeed-ngx.tar.gz --strip-components=1 -C sources/modules/incubator-pagespeed-ngx
-psol=$(cat sources/modules/incubator-pagespeed-ngx/PSOL_BINARY_URL)
-wget -qO psol.tar.gz ${psol/'$BIT_SIZE_NAME'/x64}
-[[ ! -s psol.tar.gz ]] && echo "PSOL download didn't work"
-tar -zxf psol.tar.gz -C sources/modules/incubator-pagespeed-ngx
+#mkdir -p sources/modules/incubator-pagespeed-ngx
+#wget -qO incubator-pagespeed-ngx.tar.gz "$incubator_pagespeed_ngx_source"
+#[[ ! -s incubator-pagespeed-ngx.tar.gz ]] && echo "NGX Pagespeed download didn't work"
+#tar -zxf incubator-pagespeed-ngx.tar.gz --strip-components=1 -C sources/modules/incubator-pagespeed-ngx
+#psol=$(cat sources/modules/incubator-pagespeed-ngx/PSOL_BINARY_URL)
+#wget -qO psol.tar.gz ${psol/'$BIT_SIZE_NAME'/x64}
+#[[ ! -s psol.tar.gz ]] && echo "PSOL download didn't work"
+#tar -zxf psol.tar.gz -C sources/modules/incubator-pagespeed-ngx

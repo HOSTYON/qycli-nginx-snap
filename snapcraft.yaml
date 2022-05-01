@@ -38,6 +38,13 @@ parts:
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
+    override-build: |
+      snapcraftctl build
+
+      cd sources/modules/lua-nginx-module/lua_resty_core
+      make install PREFIX=/usr/local/nginx
+      cd sources/modules/lua-nginx-module/lua_resty_lrucache
+      make install PREFIX=/usr/local/nginx
     build-packages:
       - software-properties-common
       - curl
@@ -59,6 +66,7 @@ parts:
       - libmaxminddb0
       - libmaxminddb-dev
     autotools-configure-parameters:
+      - --with-ld-opt="-Wl,-rpath,sources/modules/lua-nginx-module/openresty_luajit2"
       - --conf-path=/etc/nginx/nginx.conf
       - --http-log-path=/var/log/nginx/access.log
       - --error-log-path=/var/log/nginx/error.log
@@ -105,10 +113,9 @@ parts:
       - --add-dynamic-module=sources/modules/ngx_devel_kit
       - --add-dynamic-module=sources/modules/echo_nginx_module
       - --add-dynamic-module=sources/modules/ngx-fancyindex
+      - --add-dynamic-module=sources/modules/lua-nginx-module
       - --add-dynamic-module=sources/modules/nchan
       - --add-dynamic-module=sources/modules/nginx-rtmp-module
       - --add-dynamic-module=sources/modules/nginx-upload-progress-module
       - --add-dynamic-module=sources/modules/ngx_http_substitutions_filter_module
       - --add-dynamic-module=sources/modules/ngx_http_geoip2_module
-      - --add-dynamic-module=sources/modules/ngx_brotli
-      - --add-dynamic-module=sources/modules/incubator-pagespeed-ngx
