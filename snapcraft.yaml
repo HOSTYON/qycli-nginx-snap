@@ -39,6 +39,9 @@ parts:
 
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
     override-build: |
+      export LUAJIT_LIB=/luajit/lib
+      export LUAJIT_INC=/luajit/include/luajit-2.1
+
       snapcraftctl build
 
       cd sources/modules/lua-nginx-module/lua_resty_core
@@ -66,7 +69,7 @@ parts:
       - libmaxminddb0
       - libmaxminddb-dev
     autotools-configure-parameters:
-      - --with-ld-opt="-Wl,-rpath,sources/modules/lua-nginx-module/openresty_luajit2"
+      - --with-ld-opt="-Wl,-rpath,/luajit"
       - --conf-path=/etc/nginx/nginx.conf
       - --http-log-path=/var/log/nginx/access.log
       - --error-log-path=/var/log/nginx/error.log
