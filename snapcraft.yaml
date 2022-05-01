@@ -45,6 +45,7 @@ parts:
       make install PREFIX=/usr/local/nginx
       cd sources/modules/lua-nginx-module/lua_resty_lrucache
       make install PREFIX=/usr/local/nginx
+
     build-packages:
       - software-properties-common
       - curl
