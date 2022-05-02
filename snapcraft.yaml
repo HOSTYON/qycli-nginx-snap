@@ -41,11 +41,9 @@ parts:
     override-build: |
       snapcraftctl build
 
-      cd sources/modules/lua-nginx-module/lua_resty_core
-      make install PREFIX=/usr/local/nginx
-      cd sources/modules/lua-nginx-module/lua_resty_lrucache
-      make install PREFIX=/usr/local/nginx
-
+      make -C sources/modules/lua_resty_core install PREFIX=/usr/local/nginx
+      make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/nginx
+      
     build-packages:
       - software-properties-common
       - curl
