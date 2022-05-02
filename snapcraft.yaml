@@ -41,7 +41,7 @@ parts:
     override-build: |
       snapcraftctl build
       
-      cp -rf /usr/local/luajit/ $SNAPCRAFT_PART_INSTALL/
+      cp -rf /usr/local/luajit/ $SNAPCRAFT_PART_INSTALL/usr/local/luajit/
       
       make -C sources/modules/lua_resty_core install PREFIX=/usr/local/nginx
       make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/nginx
