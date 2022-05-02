@@ -40,7 +40,9 @@ parts:
     source: $SNAPCRAFT_PROJECT_DIR/nginx-latest.tar.gz
     override-build: |
       snapcraftctl build
-
+      
+      cp -rf /usr/local/luajit/ $SNAPCRAFT_PART_INSTALL/
+      
       make -C sources/modules/lua_resty_core install PREFIX=/usr/local/nginx
       make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/nginx
       
