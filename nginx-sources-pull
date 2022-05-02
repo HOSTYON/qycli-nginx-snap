@@ -129,8 +129,8 @@ lua_nginx_module_source=https://github.com$(set_github_url)
 echo "lua_nginx_module_source=$lua_nginx_module_source" >>nginx-qycli-sources
 wget -qO lua-nginx-module.tar.gz "$lua_nginx_module_source"
 tar zxvf lua-nginx-module.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module
-sed -i '1i\LUAJIT_INC="/luajit/include/luajit-2.1"' sources/modules/lua-nginx-module/config
-sed -i '1i\LUAJIT_LIB="/luajit/lib"' sources/modules/lua-nginx-module/config
+sed -i '1i\LUAJIT_INC="/usr/local/luajit/include/luajit-2.1"' sources/modules/lua-nginx-module/config
+sed -i '1i\LUAJIT_LIB="/usr/local/luajit/lib"' sources/modules/lua-nginx-module/config
 
 mkdir -p sources/modules/openresty_luajit2
 github_repo=openresty/luajit2
