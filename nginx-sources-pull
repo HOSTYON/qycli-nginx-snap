@@ -139,7 +139,7 @@ echo "openresty_luajit2_source=$openresty_luajit2_source" >>nginx-qycli-sources
 wget -qO openresty_luajit2.tar.gz "$openresty_luajit2_source"
 tar zxvf openresty_luajit2.tar.gz --strip-components=1 -C sources/modules/openresty_luajit2
 make -C sources/modules/openresty_luajit2
-make -C sources/modules/openresty_luajit2 install PREFIX=/luajit
+make -C sources/modules/openresty_luajit2 install PREFIX=/usr/local/luajit
 
 mkdir -p sources/modules/lua_resty_core
 lua_resty_core_source=https://github.com/openresty/lua-resty-core/tarball/master
