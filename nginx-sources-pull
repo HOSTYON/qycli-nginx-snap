@@ -13,9 +13,9 @@ echo "Downloading Dependencies"
 [[ -f nginx-qycli-sources ]] && rm nginx-qycli-sources
 
 ## PCRE
-echo "Downloading PCRE"
-pcre_source=https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
-echo "pcre_source=$pcre_source" >>nginx-qycli-sources
+#echo "Downloading PCRE"
+#pcre_source=https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
+#echo "pcre_source=$pcre_source" >>nginx-qycli-sources
 
 mkdir -p sources/dependencies/pcre
 wget -qO pcre.tar.bz2 $pcre_source
