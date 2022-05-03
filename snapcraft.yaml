@@ -43,8 +43,10 @@ parts:
 
       cp -rf /usr/local/luajit/ $SNAPCRAFT_PART_INSTALL/usr/local/luajit/
 
-      make -C sources/modules/lua_resty_core install PREFIX=/usr/local/nginx
-      make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/nginx
+      make -C sources/modules/lua_resty_core install PREFIX=/usr/local/lua_resty
+      make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/lua_resty
+      
+      cp -rf /usr/local/lua_resty/ $SNAPCRAFT_PART_INSTALL/usr/local/lua_resty/
 
     build-packages:
       - software-properties-common
