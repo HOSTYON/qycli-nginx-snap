@@ -67,7 +67,7 @@ parts:
       - libmaxminddb0
       - libmaxminddb-dev
     autotools-configure-parameters:
-      - --with-ld-opt="-Wl,-E -Wl,-rpath,/usr/local/luajit/lib"
+      - --with-ld-opt="-lpcre -Wl,-rpath,/usr/local/luajit/lib"
       - --with-cc-opt="-Wno-error"
       - --conf-path=/etc/nginx/nginx.conf
       - --http-log-path=/var/log/nginx/access.log
