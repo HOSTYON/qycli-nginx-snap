@@ -41,12 +41,10 @@ parts:
     override-build: |
       snapcraftctl build
 
-      cp -rf /usr/local/luajit/ $SNAPCRAFT_PART_INSTALL/usr/local/luajit/
-
-      make -C sources/modules/lua_resty_core install PREFIX=/usr/local/lua_resty
-      make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/lua_resty
-      
-      cp -rf /usr/local/lua_resty/ $SNAPCRAFT_PART_INSTALL/usr/local/lua_resty/
+      #cp -rf /usr/local/luajit/ $SNAPCRAFT_PART_INSTALL/usr/local/luajit/
+      #make -C sources/modules/lua_resty_core install PREFIX=/usr/local/lua_resty
+      #make -C sources/modules/lua_resty_lrucache install PREFIX=/usr/local/lua_resty
+      #cp -rf /usr/local/lua_resty/ $SNAPCRAFT_PART_INSTALL/usr/local/lua_resty/
 
     build-packages:
       - software-properties-common
@@ -116,7 +114,6 @@ parts:
       - --add-dynamic-module=sources/modules/ngx_devel_kit
       - --add-dynamic-module=sources/modules/echo_nginx_module
       - --add-dynamic-module=sources/modules/ngx-fancyindex
-      - --add-dynamic-module=sources/modules/lua-nginx-module
       - --add-dynamic-module=sources/modules/nchan
       - --add-dynamic-module=sources/modules/nginx-rtmp-module
       - --add-dynamic-module=sources/modules/nginx-upload-progress-module
