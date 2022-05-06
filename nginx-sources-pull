@@ -12,15 +12,15 @@ echo "Downloading Dependencies"
 
 [[ -f nginx-qycli-sources ]] && rm nginx-qycli-sources
 
-## PCRE
+## PCRE - is dynamically linked from apt package instead
 #echo "Downloading PCRE"
 #pcre_source=https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.bz2
 #echo "pcre_source=$pcre_source" >>nginx-qycli-sources
 
-mkdir -p sources/dependencies/pcre
-wget -qO pcre.tar.bz2 $pcre_source
-[[ ! -s pcre.tar.bz2 ]] && echo "PCRE download didn't work"
-tar -xf pcre.tar.bz2 --strip-components=1 -C sources/dependencies/pcre
+#mkdir -p sources/dependencies/pcre
+#wget -qO pcre.tar.bz2 $pcre_source
+#[[ ! -s pcre.tar.bz2 ]] && echo "PCRE download didn't work"
+#tar -xf pcre.tar.bz2 --strip-components=1 -C sources/dependencies/pcre
 
 ## zlib
 echo "Downloading zlib"
@@ -123,35 +123,35 @@ wget -qO ngx-fancyindex.tar.gz "$ngx_fancyindex_source"
 tar -zxf ngx-fancyindex.tar.gz --strip-components=1 -C sources/modules/ngx-fancyindex
 
 # NGX Lua
-mkdir -p sources/modules/lua-nginx-module
-github_repo=openresty/lua-nginx-module
-lua_nginx_module_source=https://github.com$(set_github_url)
-echo "lua_nginx_module_source=$lua_nginx_module_source" >>nginx-qycli-sources
-wget -qO lua-nginx-module.tar.gz "$lua_nginx_module_source"
-tar zxvf lua-nginx-module.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module
-sed -i '1i\LUAJIT_INC="/usr/local/luajit/include/luajit-2.1"' sources/modules/lua-nginx-module/config
-sed -i '1i\LUAJIT_LIB="/usr/local/luajit/lib"' sources/modules/lua-nginx-module/config
+#mkdir -p sources/modules/lua-nginx-module
+#github_repo=openresty/lua-nginx-module
+#lua_nginx_module_source=https://github.com$(set_github_url)
+#echo "lua_nginx_module_source=$lua_nginx_module_source" >>nginx-qycli-sources
+#wget -qO lua-nginx-module.tar.gz "$lua_nginx_module_source"
+#tar zxvf lua-nginx-module.tar.gz --strip-components=1 -C sources/modules/lua-nginx-module
+#sed -i '1i\LUAJIT_INC="/usr/local/luajit/include/luajit-2.1"' sources/modules/lua-nginx-module/config
+#sed -i '1i\LUAJIT_LIB="/usr/local/luajit/lib"' sources/modules/lua-nginx-module/config
 
-mkdir -p sources/modules/openresty_luajit2
-github_repo=openresty/luajit2
-openresty_luajit2_source=https://github.com$(set_github_url)
-echo "openresty_luajit2_source=$openresty_luajit2_source" >>nginx-qycli-sources
-wget -qO openresty_luajit2.tar.gz "$openresty_luajit2_source"
-tar zxvf openresty_luajit2.tar.gz --strip-components=1 -C sources/modules/openresty_luajit2
-make -C sources/modules/openresty_luajit2
-make -C sources/modules/openresty_luajit2 install PREFIX=/usr/local/luajit
+#mkdir -p sources/modules/openresty_luajit2
+#github_repo=openresty/luajit2
+#openresty_luajit2_source=https://github.com$(set_github_url)
+#echo "openresty_luajit2_source=$openresty_luajit2_source" >>nginx-qycli-sources
+#wget -qO openresty_luajit2.tar.gz "$openresty_luajit2_source"
+#tar zxvf openresty_luajit2.tar.gz --strip-components=1 -C sources/modules/openresty_luajit2
+#make -C sources/modules/openresty_luajit2
+#make -C sources/modules/openresty_luajit2 install PREFIX=/usr/local/luajit
 
-mkdir -p sources/modules/lua_resty_core
-lua_resty_core_source=https://github.com/openresty/lua-resty-core/tarball/master
-echo "lua_resty_core_source=$lua_resty_core_source" >>nginx-qycli-sources
-wget -qO lua_resty_core.tar.gz "$lua_resty_core_source"
-tar -zxf lua_resty_core.tar.gz --strip-components=1 -C sources/modules/lua_resty_core
+#mkdir -p sources/modules/lua_resty_core
+#lua_resty_core_source=https://github.com/openresty/lua-resty-core/tarball/master
+#echo "lua_resty_core_source=$lua_resty_core_source" >>nginx-qycli-sources
+#wget -qO lua_resty_core.tar.gz "$lua_resty_core_source"
+#tar -zxf lua_resty_core.tar.gz --strip-components=1 -C sources/modules/lua_resty_core
 
-mkdir -p sources/modules/lua_resty_lrucache
-lua_resty_lrucache_source=https://github.com/openresty/lua-resty-lrucache/tarball/master
-echo "lua_resty_lrucache_source=$lua_resty_lrucache_source" >>nginx-qycli-sources
-wget -qO lua_resty_lrucache.tar.gz "$lua_resty_lrucache_source"
-tar -zxf lua_resty_lrucache.tar.gz --strip-components=1 -C sources/modules/lua_resty_lrucache
+#mkdir -p sources/modules/lua_resty_lrucache
+#lua_resty_lrucache_source=https://github.com/openresty/lua-resty-lrucache/tarball/master
+#echo "lua_resty_lrucache_source=$lua_resty_lrucache_source" >>nginx-qycli-sources
+#wget -qO lua_resty_lrucache.tar.gz "$lua_resty_lrucache_source"
+#tar -zxf lua_resty_lrucache.tar.gz --strip-components=1 -C sources/modules/lua_resty_lrucache
 
 ## NCHAN
 echo "Downloading NCHAN"
