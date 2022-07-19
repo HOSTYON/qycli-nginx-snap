@@ -174,14 +174,14 @@ wget -qO nginx-rtmp-module.tar.gz $nginx_rtmp_module_source
 tar -zxf nginx-rtmp-module.tar.gz --strip-components=1 -C sources/modules/nginx-rtmp-module
 
 ## Nginx Upload Progress
-echo "Downloading Nginx Upload Progress"
-nginx_upload_progress_module_source=https://github.com/masterzen/nginx-upload-progress-module/tarball/master
-echo "nginx_upload_progress_module_source=$nginx_upload_progress_module_source" >>nginx-qycli-sources
+#echo "Downloading Nginx Upload Progress"
+#nginx_upload_progress_module_source=https://github.com/masterzen/nginx-upload-progress-module/tarball/master
+#echo "nginx_upload_progress_module_source=$nginx_upload_progress_module_source" >>nginx-qycli-sources
 
-mkdir -p sources/modules/nginx-upload-progress-module
-wget -qO nginx-upload-progress-module.tar.gz $nginx_upload_progress_module_source
-[[ ! -s nginx-upload-progress-module.tar.gz ]] && echo "Nginx Upload Progress download didn't work"
-tar -zxf nginx-upload-progress-module.tar.gz --strip-components=1 -C sources/modules/nginx-upload-progress-module
+#mkdir -p sources/modules/nginx-upload-progress-module
+#wget -qO nginx-upload-progress-module.tar.gz $nginx_upload_progress_module_source
+#[[ ! -s nginx-upload-progress-module.tar.gz ]] && echo "Nginx Upload Progress download didn't work"
+#tar -zxf nginx-upload-progress-module.tar.gz --strip-components=1 -C sources/modules/nginx-upload-progress-module
 
 ## NGX HTTP Substitutions Filter
 echo "Downloading NGX HTTP Substitutions Filter"

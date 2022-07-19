@@ -116,6 +116,6 @@ parts:
       - --add-dynamic-module=sources/modules/ngx-fancyindex
       - --add-dynamic-module=sources/modules/nchan
       - --add-dynamic-module=sources/modules/nginx-rtmp-module
-      - --add-dynamic-module=sources/modules/nginx-upload-progress-module
+      #- --add-dynamic-module=sources/modules/nginx-upload-progress-module
       - --add-dynamic-module=sources/modules/ngx_http_substitutions_filter_module
       - --add-dynamic-module=sources/modules/ngx_http_geoip2_module
